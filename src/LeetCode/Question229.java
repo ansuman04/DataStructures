@@ -7,21 +7,21 @@ public class Question229 {
 
     public List<Integer> majorityElement(int[] nums) {
 
-        int cme1=-1;
-        int cme2=-1;
+        int cme1=Integer.MIN_VALUE;
+        int cme2=Integer.MIN_VALUE;
         int count1=0;
         int count2=0;
 
         for(int i=0;i<nums.length;i++){
-            if(count1==0){
-                cme1 =  nums[i];
-                count1+=1;
-            }else if(count2==0){
-                cme2 =nums[i];
-                count2+=1;
-            }else if(cme1 == nums[i]){
+            if(cme1 == nums[i]){
                 count1+=1;
             }else if(cme2 ==nums[i]){
+                count2+=1;
+            }else if(count1==0){
+                cme1 = nums[i];
+                count1+=1;
+            }else if(count2==0){
+                cme2 = nums[i];
                 count2+=1;
             }else{
                 count1--;
@@ -34,11 +34,11 @@ public class Question229 {
         count2 =0;
     
         for(int n : nums) {
-        if(cme1 != -1 && cme1 == n) {
+        if( cme1 == n) {
             count1++;
         }
     
-        if (cme2 != -1 && cme2 == n) {
+        if ( cme2 == n) {
                 count2++;
         }
         }
